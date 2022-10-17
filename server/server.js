@@ -20,9 +20,8 @@ app.use(router);
 if (process.env.STATE === 'production'){
     app.use(express.static(join(__dirname,'../client/build'))) //para q pueda ejecutar bien el frontent
     app.get('*',(req,res)=>{
-        res.sendFile(join(__dirname,'../client/build/index.html')) })
-}
-else{
+        res.sendFile(path.join(__dirname,'../client/build/index.html')) })
+}else{
     app.get('/',(req,res)=>{
         res.send('run server')
     })
