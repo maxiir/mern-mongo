@@ -19,20 +19,22 @@ app.use(express.urlencoded({extended:false}));
 app.use(morgan('dev'))
 app.use(router);
 
+app.set('port', process.env.PORT || 4000);
+
 if (process.env.STATE === 'production'){
 
     app.use(express.static(join(__dirname,'../client/build'))) //para q pueda ejecutar bien el frontent
+    app.listen(app.get('port'),()=>{
+        console.log('server on port:',app.get('port'))
+    })
+
 }else{
     router.get('/', controller.index)
     
 }
 
 
-app.set('port', process.env.PORT || 4000);
 
-app.listen(app.get('port'),()=>{
-    console.log('server on port:',app.get('port'))
-})
 
 
 export default app;
