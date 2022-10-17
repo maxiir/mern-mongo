@@ -1,4 +1,4 @@
-import { Formik, Form } from "formik";
+import { Formik } from "formik";
 import { saveEmpleado } from "../api/api.js";
 
 function Home() {
@@ -12,6 +12,7 @@ function Home() {
       onSubmit={async (values) => {
         console.log(values);
         const respuesta = await saveEmpleado(values);
+        console.log(respuesta)
       }} //para ver lo q se va a enviar
     >
       {(
