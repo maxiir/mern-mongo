@@ -1,7 +1,7 @@
 import express from "express"
 import {config} from "dotenv"
 import router from "./routes/routes.js"
-import {dirname, join} from 'path'
+import path, {dirname, join} from 'path'
 import {fileURLToPath} from 'url'
 import morgan from 'morgan'
 import cors from 'cors'
@@ -16,7 +16,17 @@ app.use(express.json())
 app.use(express.urlencoded({extended:false}));
 app.use(morgan('dev'))
 app.use(router);
-app.use(express.static(join(__dirname,'../client/build'))) //para q pueda ejecutar bien el frontent
+
+if (process.env.STATE === 'production'){
+    app.use(express.static(join(__dirname,'../client/build'))) //para q pueda ejecutar bien el frontent
+    app.get('*',(req,res)=>{
+        res.sendFile(path.join(__dirname,'client','build','index.html')) })
+}
+else{
+    app.get('/',(req,res)=>{
+        res.send('run server')
+    })
+}
 
 
 
