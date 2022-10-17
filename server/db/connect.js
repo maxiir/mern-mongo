@@ -1,4 +1,4 @@
-import { connect } from 'mongoose'
+import { connect } from 'mongoose/promise'
 
 const conexion = await connect(process.env.MONGODB_URI)
 console.log('connection to:', conexion.connection.name)
