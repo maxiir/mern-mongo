@@ -30,6 +30,9 @@ if (process.env.STATE === 'production'){
 
 app.set('port', process.env.PORT || 4000);
 
+app.listen(app.get('port'),()=>{
+    console.log('server on port:',app.get('port'))
+})
 
 
 export default app;
