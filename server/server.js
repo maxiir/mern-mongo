@@ -6,6 +6,9 @@ import {fileURLToPath} from 'url'
 import morgan from 'morgan'
 import cors from 'cors'
 
+import controller from './controllers/controller.js'
+
+
 config()
 
 const app = express()
@@ -16,8 +19,14 @@ app.use(express.urlencoded({extended:false}));
 app.use(morgan('dev'))
 app.use(router);
 
+if (process.env.STATE === 'production'){
 
-app.use(express.static(join(__dirname,'../client/build'))) //para q pueda ejecutar bien el frontent
+    app.use(express.static(join(__dirname,'../client/build'))) //para q pueda ejecutar bien el frontent
+}else{
+    router.get('/', controller.index)
+    
+}
+
 
 app.set('port', process.env.PORT || 4000);
 

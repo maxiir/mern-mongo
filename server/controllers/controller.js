@@ -1,7 +1,8 @@
 import myModel from "../model/model.js"
 const controller = {};
 
-
+controller.index = (req,res)=>{
+    res.send('server running...')}
 
 controller.saveEmpleados = async (req,res) => {
     //const {name,lastname,cel} = req.body
