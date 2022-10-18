@@ -6,7 +6,7 @@ import {fileURLToPath} from 'url'
 import morgan from 'morgan'
 import cors from 'cors'
 
-import controller from './controllers/controller.js'
+
 
 
 config()
@@ -22,7 +22,7 @@ app.use(express.static(join(__dirname,'../client/build'))) //para q pueda ejecut
 
 app.set('port', process.env.PORT || 4000);
 
-app.listen(app.get('port'),()=>{
+app.listen(app.get('port'),() => {
     console.log('server on port:',app.get('port'))
 })
 
