@@ -21,6 +21,8 @@ app.use(express.static(join(__dirname,'../client/build'))) //para q pueda ejecut
 
 app.set('port', process.env.PORT || 4000);
 
+app.listen(app.get('port'),()=>{
+    console.log('server on port:',app.get('port'))
+})
 
-
-export default app;
+//export default app;
