@@ -20,9 +20,9 @@ app.use(router);
 app.set('port', process.env.PORT || 4000);
 
 if (process.env.NODE_ENV === 'production'){
-    app.use(express.static(path.join(__dirname,'../client/build'))) //para q pueda ejecutar bien el frontent
+    app.use(express.static(path.join(__dirname,'./build'))) //para q pueda ejecutar bien el frontent
     app.get('*', (req,res) => {
-        const index = path.join(__dirname,'../','client','build','index.html')
+        const index = path.join(__dirname,'./','build','index.html')
         res.sendFile(index)
     })
 }else{
