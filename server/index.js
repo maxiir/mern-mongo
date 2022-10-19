@@ -1,5 +1,5 @@
 import app from "./server.js"
-import conexion from "./db/connect.js"
+//import conexion from "./db/connect.js"
 
 
 
