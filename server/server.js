@@ -19,10 +19,12 @@ app.use(morgan('dev'))
 app.use(router);
 app.set('port', process.env.PORT || 4000);
 
+
+//si esta en produccion muestra el build sino un mensaje
 if (process.env.NODE_ENV === 'production'){
-    app.use(express.static(path.join(__dirname,'./build'))) //para q pueda ejecutar bien el frontent
+    app.use(express.static(join(__dirname,'./build'))) //para q pueda ejecutar bien el frontent
     app.get('*', (req,res) => {
-        const index = path.join(__dirname,'./','build','index.html')
+        const index = join(__dirname,'./','build','index.html')
         res.sendFile(index)
     })
 }else{
